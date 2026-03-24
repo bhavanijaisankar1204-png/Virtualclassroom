@@ -11,7 +11,10 @@ const fs = require("fs");
 connectDB();
 /* ================= APP ================= */
 const app = express();
-app.use(cors());
+aapp.use(cors({
+  origin: "*",
+  methods: ["GET", "POST"],
+}));
 app.use(express.json());
 
 const server = http.createServer(app);
@@ -59,7 +62,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 app.post("/upload", upload.single("file"), (req, res) => {
-  res.json({ fileName: req.file.filename });
+  res.json({
+    fileName: req.file.filename,
+    originalName: req.file.originalname,
+  });
 });
 
 /* ================= SOCKET ================= */
