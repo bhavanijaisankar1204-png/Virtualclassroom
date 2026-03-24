@@ -69,10 +69,10 @@ export default function StudentDashboard() {
     const formData = new FormData();
     formData.append("file", file);
 
-    const res = await fetch("http://localhost:5000/upload", {
-      method: "POST",
-      body: formData,
-    });
+    const res = await fetch("https://virtualclassroom-omn0.onrender.com/upload", {
+  method: "POST",
+  body: formData,
+});
 
     const fileData = await res.json();
 
